@@ -19,5 +19,6 @@ fi
 chown -R bud:bud /data /go
 chmod -R 770 /go /data
 
-# Run supervisord.
-set -x; exec "$@"
+# Run as bud user.
+CMD="$@"
+set -x; exec su - bud -m -c "$CMD"

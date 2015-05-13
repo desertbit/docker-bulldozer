@@ -31,8 +31,6 @@ RUN chown -R bud:bud /data /go  && \
 ONBUILD RUN chown -R bud:bud /go && \
 	chmod -R 770 /go
 
-USER bud
-
 EXPOSE 9000
 
 VOLUME [ "/data" ]
