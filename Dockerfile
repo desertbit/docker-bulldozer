@@ -2,7 +2,7 @@
 # DesertBit Bulldozer Dockerfile
 #
 
-FROM golang
+FROM golang:onbuild
 
 MAINTAINER Roland Singer, roland.singer@desertbit.com
 
