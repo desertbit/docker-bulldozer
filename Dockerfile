@@ -2,7 +2,7 @@
 # DesertBit Bulldozer Dockerfile
 #
 
-FROM golang:onbuild
+FROM golang
 
 MAINTAINER Roland Singer, roland.singer@desertbit.com
 
@@ -27,7 +27,10 @@ RUN chown -R bud:bud /data /go  && \
 	chmod -R 770 /go /data && \
 	chmod +x /run.sh
 
-# Fix permission on build.
+# On build triggers
+ONBUILD COPY . /go/src/app
+ONBUILD RUN go-wrapper download
+ONBUILD RUN go-wrapper install
 ONBUILD RUN chown -R bud:bud /go && \
 	chmod -R 770 /go
 
