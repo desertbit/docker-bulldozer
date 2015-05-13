@@ -27,6 +27,10 @@ RUN chown -R bud:bud /data /go  && \
 	chmod -R 770 /go /data && \
 	chmod +x /run.sh
 
+
+RUN mkdir -p /go/src/app
+WORKDIR /go/src/app
+
 # On build triggers
 ONBUILD COPY . /go/src/app
 ONBUILD RUN go-wrapper download
