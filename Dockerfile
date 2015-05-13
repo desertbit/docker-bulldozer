@@ -22,9 +22,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 # Add the bulldozer user, prepare the data directory and fix permission.
 ADD run.sh /run.sh
 RUN useradd --no-create-home bud
-RUN mkdir -p /data/files && \
-	touch /data/settings.toml
-RUN chown -R bud:bud /data /go  && \
+RUN mkdir -p /data/files
+RUN chown -R bud:bud /data /go && \
 	chmod -R 770 /go /data && \
 	chmod +x /run.sh
 

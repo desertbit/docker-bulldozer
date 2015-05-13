@@ -14,11 +14,15 @@ if [ ! -z "$TIMEZONE" ]; then
     update_timezone "$TIMEZONE"
 fi
 
+# Creare an empty settings file if no settings file is present.
+if [ ! -e "/data/settings.toml" ]; then
+	touch /data/settings.toml
+fi
 
 # Fix permissions.
 chown -R bud:bud /data /go
 chmod -R 770 /go /data
 
-# Run as bud user.
+# Run as bud user. Preserve the PATH variable.
 CMD="$@"
-set -x; exec su - bud -m -c "$CMD"
+set -x; exec su - bud -m -c "PATH=\"$PATH\" $CMD"
