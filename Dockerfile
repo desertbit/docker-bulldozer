@@ -7,8 +7,9 @@ FROM golang
 MAINTAINER Roland Singer, roland.singer@desertbit.com
 
 ENV BULLDOZER_DATA_DIR "/data/files"
+ENV BULLDOZER_SESSIONS_DB_PATH "/data/sessions.db"
 ENV BULLDOZER_DB_ADDR "ENV:DB_PORT_28015_TCP_ADDR"
-ENV BULLDOZER_DB_PORT "28015"
+ENV BULLDOZER_DB_PORT "ENV:DB_PORT_28015_TCP_PORT"
 
 # Install dependencies
 RUN export DEBIAN_FRONTEND=noninteractive; \
