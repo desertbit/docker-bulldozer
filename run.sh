@@ -19,6 +19,11 @@ if [ ! -e "/data/settings.toml" ]; then
 	touch /data/settings.toml
 fi
 
+# Create the data directory if missing.
+if [ ! -d "$BULLDOZER_DATA_DIR" ]; then
+	mkdir -p "$BULLDOZER_DATA_DIR"
+fi
+
 # Fix permissions.
 chown -R bud:bud /data /go
 chmod -R 770 /go /data
